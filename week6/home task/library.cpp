@@ -1,49 +1,80 @@
-#include <iostream>
-#include <string>
+#include<iostream>
 using namespace std;
-
-int main() {
-    int choice;
-    string books[100];
-    int bookCount = 0;
-
-
-    do {
-        cout << "\n--- Library System Menu ---" << endl;
-        cout << "1. Add Books" << endl;
-        cout << "2. View Books" << endl;
-        cout << "3. Borrow Books" << endl;
-        cout << "4. Exit" << endl; 
-        cout << "Enter your choice: ";
+int main()
+{
+    int n;
+    string book[100];
+    string name;
+    while(true)
+    {
+        cout<<"LIBRARY MANAGEMENT SYSTEM "<<endl;
+        cout<<"1. ADD BOOKS \n";
+        cout<<"2. VIEW BOOKS \n";
+        cout<<"3. BORROW BOOKS\n";
+        cout<<"4. VIEW BOOKS\n";
+        cout<<"5. EXIT \n";
+        int choice;
+        cout<<"Enter the choice(1-5) ";
         cin >> choice;
-
-        switch (choice) {
-            case 1:
-                cout << "Enter book name: ";
-                cin >> books[bookCount];
-                bookCount++;
-                cout << "Book added successfully!" << endl;
-                break;
-
-            case 2:
-                cout << "\nList of Books:" << endl;
-                for (int i = 0; i < bookCount; i++) {
-                    cout << i + 1 << ". " << books[i] << endl;
-                }
-                break;
-
-            case 3:
-                cout << "Borrowing system coming soon..." << endl;
-                break;
-
-            case 4:
-                cout << "Exiting system..." << endl;
-                break;
-
-            default:
-                cout << "Invalid choice! Try again." << endl;
+        if(choice==1)
+        {
+            cout<<"How many books you want to entered ";
+            cin >> n;
+            cout<<"The name "<<n<<" books should written below: "<<endl;
+            for(int i=0 ; i < n ; i++)
+            {
+                cin >> book[i];
+            }
         }
-    } while (choice != 4);
-
-    return 0;
+        
+        else if(choice==2)
+        {
+            cout<<"These books are available in library "<<endl;
+            for(int i=0; i<n; i++)
+            {
+                cout<<book[i]<<endl;
+            }
+        }
+        else if(choice==3)
+        {
+            bool found=false;
+            cout<<"Enter the book name you want to borrow "<<endl;
+            cin >> name;
+            for(int i=0 ; i< n ; i++)
+            {
+                if(book[i]==name)
+                {
+                    cout<<"BOOK FOUND "<<endl;
+                    cout<<"YOU BORROWED "<<name<<"  book from library "<<endl;
+                    book[i]={};
+                    found=true;
+                    break;
+                }
+                
+            }
+            if(!found)
+                {
+                    cout<<"BOOK IS NOT AVAILABLE IN LIBRARY "<<endl;
+                }
+        }
+        else if(choice==4)
+        {
+          cout<<"These books are available in library "<<endl;
+            for(int i=0; i<n; i++)
+            {
+                cout<<book[i]<<endl;
+            }
+        }
+        else if(choice==5)
+        {
+            cout<<"THANKS FOR VISITING OUR LIBRARY "<<endl;
+            break;
+        }
+        else 
+        {
+            cout<<"invalid .Enter the valid choice (1-6)"<<endl;
+        }
+        
+    }
+    
 }
